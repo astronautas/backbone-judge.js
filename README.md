@@ -1,4 +1,4 @@
-# Judge.js - a Javascript data validation tool
+# BackboneJudge.js - a Javascript data validation tool
 Judge.js provides means to validate attributes for models, or just generic data. It's not sorcery - the plugin itself only encourages to split validations into separate function without putting all the code in one method. It is especially useful for Backbone validations.
 Validating functions have to be written by programmers themselves, although, Judge is shipped with predefined length and presence validating functions.
 
