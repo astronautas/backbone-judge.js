@@ -3,3 +3,4 @@ Judge.js provides means to validate attributes for models, or just generic data.
 Validating functions have to be written by programmers themselves, although, Judge is shipped with predefined length and presence validating functions.
 
 Judge.js was initially designed as a Backbone.js plugin for models to validate attributes. As the code was universal for any sorts of validations even without Backbone, the plugin was renamed from BackboneCop to Judge.js.
+## Idea: to create Rails like validations for Backbone model
