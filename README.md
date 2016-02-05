@@ -4,6 +4,7 @@ Backbone-judge is a lightweight (~1kb minified) Backbone model attributes valida
 ### Usage
 Add a hash 'validations' to your Backbone model, containing attributes as keys which need to tested and values as arrays of objects, containing validation function names and expected values.
 
+```javascript
 var EmailModel = Backbone.Model.extend({
   validations = {
     'name'         : [{ fn: 'isUppercase', val: no }, {fn: 'presence', val: true}],
@@ -18,6 +19,7 @@ var EmailModel = Backbone.Model.extend({
     ... // should return either true or error message (string)
   }
 });
+```
 
 Presence and min/max length validating functions get shipped with plugins. Custom validating functions have to be declared as method of the model (pass only names, not functions themselves).
 
