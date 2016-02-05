@@ -1,7 +1,7 @@
 # Backbone-judge.js - a Backbone.js model validation tool
 Backbone-judge is a lightweight (~1kb minified) Backbone model attributes validation tool. It provides means to structure validations in a pretty similar fashion as Ruby on Rails. I have originaly made the tool for a personal project. As it was convenient enough, I decided to share it with others.
 
-### Usage
+## Usage
 ### Via HTML
 Add this line to your footer (after Backbone.js!)
 ```html
