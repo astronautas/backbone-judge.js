@@ -1,5 +1,4 @@
-define(['backbone'], function(Backbone) {
-
+(function() {
   // Attaching a method to the function's prototype allows
   // its instances use the method
   Backbone.Model.prototype.validate = function() {
@@ -47,4 +46,4 @@ define(['backbone'], function(Backbone) {
       return error;
     }
   };
-}); 
+})();
