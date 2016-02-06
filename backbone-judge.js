@@ -21,7 +21,8 @@
           var validatingFn   = this[fnName];
           var expectedValue  = validatingFunctions[i].val;
           var attributeValue = attributes[attrName];
-          var error          = validatingFn(attrName, attributeValue, expectedValue);
+          var errorMessage   = validatingFunctions[i].msg;
+          var error          = validatingFn(attrName, attributeValue, expectedValue, errorMessage);
 
           if (error !== true) {
             errors.push(error);
@@ -42,8 +43,11 @@
   };
 
   // Validates presence of an attribute
-  Backbone.Model.prototype.presence = function(attrName, attrValue, condition) {
-    var error = attrName + ' cannot be empty';
+  Backbone.Model.prototype.presence = function(attrName, attrValue, condition, msg) {
+    // Convert all falsey values to empty string
+    attrValue = attrValue || '';
+
+    var error = msg;
 
     if ((attrValue.length !== 0 && condition) || (attrValue.length === 0 && !condition)) {
       return true;
