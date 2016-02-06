@@ -28,7 +28,7 @@ Add a hash 'validations' to your Backbone model, containing attributes as keys w
 ```javascript
 var EmailModel = Backbone.Model.extend({
   validations = {
-    'name'         : [{ fn: 'isUppercase', val: no, msg: 'Name should be uppercased' }, {fn: 'presence', val: true, msg: 'Name cannot be empty}],
+    'name'         : [{ fn: 'isUppercase', val: no, msg: 'Name should be uppercased' }, {fn: 'presence', val: true, msg: 'Name cannot be empty' }],
     'emailAddress' : [...
   },
   
