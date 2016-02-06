@@ -44,3 +44,15 @@ var EmailModel = Backbone.Model.extend({
 
 Presence and min/max length validating functions get shipped with plugins. Custom validating functions have to be declared as method of the model (pass only names, not functions themselves).
 
+### Displaying errors
+To display errors with views, listen to the collection's / model's invalid event. Callback gets passed the collection / model and errors array as arguments.
+
+Also, add validate: true option when creating collection / model to allow set method validations.
+
+```javascript
+this.listenTo(this.collection, 'invalid', this.invalidSubmit);
+
+invalidSubmit: function(collection, errors) {
+  // do stuff with errors array
+}
+```
