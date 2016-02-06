@@ -1,8 +1,7 @@
 (function() {
   // Attaching a method to the function's prototype allows
   // its instances use the method
-  Backbone.Model.prototype.validate = function() {
-
+  Backbone.Model.prototype.validate = function(attributes) {
     // Errors array will get returned by this method
     var errors = [];
 
@@ -21,19 +20,25 @@
           var fnName         = validatingFunctions[i].fn;
           var validatingFn   = this[fnName];
           var expectedValue  = validatingFunctions[i].val;
-          var attributeValue = this.get(attrName);
+          var attributeValue = attributes[attrName];
+          var error          = validatingFn(attrName, attributeValue, expectedValue);
 
-          errors.push(validatingFn(attrName, attributeValue, expectedValue));
+          if (error !== true) {
+            errors.push(error);
+          }
         }
       }
     }
 
     // Attaches errors array to the model (which can be accessed later by the view)
     this.errors = errors;
-    console.log(errors);
 
     // If there are no errors, invalid event will not fire (as errors would be empty)
-    return errors;
+    if (errors.length) {
+      return errors;
+    } else {
+      return 0;
+    }
   };
 
   // Validates presence of an attribute
