@@ -1,7 +1,14 @@
+//! Backbone-judge.js
+//! version : 1.0
+//! authors : Lukas Valatka
+//! license : MIT
+//! https://github.com/astronautas/backbone-judge.js
+
 (function() {
   // Attaching a method to the function's prototype allows
   // its instances use the method
   Backbone.Model.prototype.validate = function(attributes) {
+    console.log(attributes);
     // Errors array will get returned by this method
     var errors = [];
 
@@ -22,7 +29,7 @@
           var expectedValue  = validatingFunctions[i].val;
           var attributeValue = attributes[attrName];
           var errorMessage   = validatingFunctions[i].msg;
-          var error          = validatingFn(attrName, attributeValue, expectedValue, errorMessage);
+          var error          = validatingFn(attributeValue, expectedValue, errorMessage);
 
           if (error !== true) {
             errors.push(error);
@@ -30,9 +37,6 @@
         }
       }
     }
-
-    // Attaches errors array to the model (which can be accessed later by the view)
-    this.errors = errors;
 
     // If there are no errors, invalid event will not fire (as errors would be empty)
     if (errors.length) {
@@ -43,16 +47,19 @@
   };
 
   // Validates presence of an attribute
-  Backbone.Model.prototype.presence = function(attrName, attrValue, condition, msg) {
-    // Convert all falsey values to empty string
-    attrValue = attrValue || '';
-
-    var error = msg;
-
+  Backbone.Model.prototype.presence = function(attrValue, condition, msg) {
     if ((attrValue.length !== 0 && condition) || (attrValue.length === 0 && !condition)) {
       return true;
     } else {
-      return error;
+      return msg;
+    }
+  };
+
+  Backbone.Model.prototype.number = function(attrValue, condition, msg) {
+    if (isNaN(attrValue)) {
+      return msg;
+    } else {
+      return true;
     }
   };
 })();
