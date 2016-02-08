@@ -1,5 +1,5 @@
 # Backbone-judge.js - a Backbone.js model validation tool
-Backbone-judge is a lightweight (~400 bytes when minified) Backbone model attributes validation tool. It provides means to structure validations in a pretty similar fashion as Ruby on Rails. I have originaly made the tool for a personal project. As it was convenient enough, I decided to share it with others.
+Backbone-judge is a lightweight Backbone model attributes validation tool (0.5 kb when minified, even less when gziped). It provides means to structure validations in a pretty similar fashion as Ruby on Rails. I have originaly made the tool for a personal project. As it was convenient enough, I decided to share it with others.
 
 ## Usage
 ### Via HTML
@@ -42,7 +42,7 @@ var EmailModel = Backbone.Model.extend({
 });
 ```
 
-Presence and min/max length validating functions get shipped with plugins. Custom validating functions have to be declared as method of the model (pass only names, not functions themselves).
+Presence and number validating functions get shipped with plugin. Custom validating functions have to be declared as methods of the model.
 
 ### Displaying errors
 To display errors with views, listen to the collection's / model's invalid event. Callback gets passed the collection / model and errors array as arguments.
