@@ -3,12 +3,24 @@
 //! authors : Lukas Valatka
 //! license : MIT
 //! https://github.com/astronautas/backbone-judge.js
+//!
 
-(function() {
-  // Attaching a method to the function's prototype allows
-  // its instances use the method
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // Register as an anonymous module
+    define([], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory();
+  } else {
+    root.returnExports = factory();
+  }
+})(this, function() {
+  // Attaching the method to the prototype of all model instances allows
+  // them to use the method (which is run before save)
   Backbone.Model.prototype.validate = function(attributes) {
-    console.log(attributes);
     // Errors array will get returned by this method
     var errors = [];
 
@@ -62,4 +74,4 @@
       return true;
     }
   };
-})();
+});
