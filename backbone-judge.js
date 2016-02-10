@@ -1,14 +1,14 @@
 //! Backbone-judge.js
-//! version : 1.0
+//! version : 1.01
 //! authors : Lukas Valatka
 //! license : MIT
 //! https://github.com/astronautas/backbone-judge.js
-//!
+//! 1.01 changes: added backbone as module dependency
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // Register as an anonymous module
-    define([], factory);
+    define(['backbone'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
@@ -67,6 +67,7 @@
     }
   };
 
+  // Validates whether attributes is number
   Backbone.Model.prototype.number = function(attrValue, condition, msg) {
     if (isNaN(attrValue)) {
       return msg;
